@@ -1,10 +1,16 @@
 import React from 'react'
-import { fetchWeather } from '@/utils'
-
+const apiKey = "e1717085edb84ced802203246232807"
+const url = `http://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=Death Valley&days=1&aqi=no&alerts=no`
 
 export default async function Weather() {
-    const weather = await fetchWeather()
+    async function fetchWeather() {
+        const response = await fetch(url)
+        const result = await response.json()
 
+        return result
+    }
+
+    const weather:object = await fetchWeather()
     console.log(weather)
     return (
         <div className="absolute z-50 font-dm-sans">
