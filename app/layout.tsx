@@ -2,6 +2,7 @@ import './globals.css'
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import Weather from '@/components/Weather'
+import Footer from '@/components/Footer';
 const moment = require('moment-timezone');
 
 
@@ -18,7 +19,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   const currentHour: string = moment.tz("America/Los_Angeles").format('HH');
-  const testHour = 8
+  const testHour = 7
 
   return (
     <html lang="en">
@@ -51,6 +52,7 @@ export default function RootLayout({
           : (<div className="opacity-60 z-0" id="fog"></div>)
         }
 
+      <Footer></Footer>
       </body>
     </html>
   )
