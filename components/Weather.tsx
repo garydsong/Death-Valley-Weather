@@ -8,6 +8,9 @@ export default function Weather() {
     const [isLoaded, setIsLoaded] = useState(false)
     const [weather, setWeatherData] = useState(null)
     const [fcSwitch, setFCSwitch] = useState(true) // starts at true to default to F
+    const [fade, setFade] = useState(false);
+
+    // async code before implementation of useEffect
     // async function fetchWeather() {
     //     const response = await fetch(url)
     //     const result = await response.json()
@@ -15,34 +18,35 @@ export default function Weather() {
     //     return result
     // }
 
+    // const weather: object = await fetchWeather()
 
-    // const weather: object = await fetchWeather()\
+    // let fcSwitch = true;
+    // const setFC = () => {
+    //     fcSwitch ? fcSwitch = false : fcSwitch = true
+    // }
 
     useEffect(() => {
         fetch(url)
         .then(res => res.json())
         .then(data => setWeatherData(data))
         .then(() => setIsLoaded(true))
+        // .then(() => setFade(true))
     }, [])
 
+    useEffect(() => {
+        isLoaded ? setFade(true) : false
+    }, [isLoaded, weather, fade])
+
     const currentHour: string = moment.tz("America/Tijuana").format('HH');
-
     const currentDate: string = moment.tz("America/Tijuana").format('YYYY-MM-DD');
-
     const currentTime: string = moment.tz("America/Tijuana").format('HH:mm');
 
-    // let fcSwitch = true;
-
     console.log(weather)
-
-    // const setFC = () => {
-    //     fcSwitch ? fcSwitch = false : fcSwitch = true
-    // }
     return isLoaded && (
-        <div className="absolute z-50 font-dm-sans z-10">
-            <div className="flex flex-col items-center">
+        <div className="absolute z-50 font-dm-sans z-10 transition-opacity duration-1000">
+            <div className={`flex flex-col items-center transition-all duration-1000 ${fade ? "opacity-100" : "opacity-0"}`}>
 
-                <div className="text-5xl font-extrabold">
+                <div className="text-5xl font-extrabold duration-500">
                     {fcSwitch
                         ? (<div className="flex">{weather.current.temp_f}°
                         <div>F</div>
