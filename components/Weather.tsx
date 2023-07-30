@@ -30,7 +30,6 @@ export default function Weather() {
         .then(res => res.json())
         .then(data => setWeatherData(data))
         .then(() => setIsLoaded(true))
-        // .then(() => setFade(true))
     }, [])
 
     useEffect(() => {

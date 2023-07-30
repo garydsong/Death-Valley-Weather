@@ -27,6 +27,7 @@ export default function RootLayout({
         <link href="https://fonts.googleapis.com/css2?family=Alike&family=DM+Sans:opsz,wght@9..40,100;9..40,200;9..40,300;9..40,400;9..40,500;9..40,600;9..40,700;9..40,800&family=Noto+Sans:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
       </header>
       <body className={
+        // unary plus to turn string to num
         +testHour >= 19 || +testHour <= 6
           ? "bg-gradient-to-r from-black via-blue-900 to-black"
           : "bg-gradient-to-r from-blue-400 via-blue-200 to-blue-400"
