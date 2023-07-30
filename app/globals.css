@@ -38,15 +38,15 @@ body {
 
 .stars {
   background-image:
-    radial-gradient(2px 2px at 20px 30px, #eee, rgba(0,0,0,0)),
-    radial-gradient(2px 2px at 40px 70px, #fff, rgba(0,0,0,0)),
-    radial-gradient(2px 2px at 50px 160px, #ddd, rgba(0,0,0,0)),
-    radial-gradient(2px 2px at 90px 40px, #fff, rgba(0,0,0,0)),
-    radial-gradient(2px 2px at 130px 80px, #fff, rgba(0,0,0,0)),
-    radial-gradient(2px 2px at 160px 120px, #ddd, rgba(0,0,0,0));
+    radial-gradient(2px 2px at 10px 40px, #eee, rgba(0,0,0,0)),
+    radial-gradient(2px 2px at 30px 60px, #fff, rgba(0,0,0,0)),
+    radial-gradient(2px 2px at 40px 150px, #ddd, rgba(0,0,0,0)),
+    radial-gradient(2px 2px at 80px 30px, #fff, rgba(0,0,0,0)),
+    radial-gradient(2px 2px at 120px 70px, #fff, rgba(0,0,0,0)),
+    radial-gradient(2px 2px at 150px 130px, #ddd, rgba(0,0,0,0));
   background-repeat: repeat;
   background-size: 200px 200px;
-  animation: zoom 5s infinite;
+  animation: zoom 20s infinite;
   opacity: 0;
 }
 
@@ -85,5 +85,36 @@ body {
   100% {
     opacity: 0;
     transform: scale(3.5);
+  }
+}
+
+#fog {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  pointer-events: none;
+  &:before, &:after {
+    content: "";
+    position: absolute;
+    top: 0; left: 0;
+    height: 100%;
+    width: 300%;
+    background-size: contain;
+    background-position: center;
+    background-repeat: repeat-x;
+  }
+  &:before {
+    background-image: url('https://res.cloudinary.com/dkr52htco/image/upload/v1536173269/fog-1.png');
+    animation: drift 60s linear 0s infinite;
+  }
+  &:after {
+    background-image: url('https://res.cloudinary.com/dkr52htco/image/upload/v1536173269/fog-2.png');
+    animation: drift 25s linear 0s infinite;
+  }
+  @keyframes drift {
+    from { transform: translate3d(0, 0, 0); }
+    to { transform: translate3d(-200vw, 0, 0); }
   }
 }

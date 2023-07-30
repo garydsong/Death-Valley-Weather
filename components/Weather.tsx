@@ -17,7 +17,7 @@ export default async function Weather() {
     console.log(weather)
 
     return (
-        <div className="absolute z-50 font-dm-sans">
+        <div className="absolute z-50 font-dm-sans z-10">
             <div className="text-6xl font-extrabold">{weather.location.name}
             </div>
             <div className="font-bold">{weather.location.region.toUpperCase()}</div>

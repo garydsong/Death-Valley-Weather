@@ -18,7 +18,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   const currentHour: string = moment.tz("America/Los_Angeles").format('HH');
-  const testHour = 19
+  const testHour = 8
 
   return (
     <html lang="en">
@@ -35,8 +35,8 @@ export default function RootLayout({
         </div>
         <div className={
           +testHour >= 19 || +testHour <= 6
-            ? "absolute top-50 right-50 w-72 h-72 bg-white rounded-full opacity-55 filter blur-2xl animate-blob"
-            : "absolute top-50 right-50 w-72 h-72 bg-yellow-300 rounded-full opacity-55 filter blur-2xl animate-blob"
+            ? "absolute top-50 right-50 w-72 h-72 bg-white rounded-full opacity-55 filter blur-2xl animate-blob z-1"
+            : "absolute top-50 right-50 w-72 h-72 bg-yellow-300 rounded-full opacity-55 filter blur-2xl animate-blob z-1"
         }></div>
 
         {+testHour >= 19 || +testHour <= 6
@@ -48,7 +48,7 @@ export default function RootLayout({
             <div className="stars"></div>
             <div className="stars"></div>
           </div>)
-          : (<></>)
+          : (<div className="opacity-60 z-0" id="fog"></div>)
         }
 
       </body>
