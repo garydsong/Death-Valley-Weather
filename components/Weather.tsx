@@ -40,7 +40,7 @@ export default function Weather() {
     const currentDate: string = moment.tz("America/Tijuana").format('YYYY-MM-DD');
     const currentTime: string = moment.tz("America/Tijuana").format('HH:mm');
 
-    console.log(weather)
+    // console.log(weather)
     return isLoaded && (
         <div className="absolute z-50 font-dm-sans z-10 transition-opacity duration-1000">
             <div className={`flex flex-col items-center transition-all duration-1000 ${fade ? "opacity-100" : "opacity-0"}`}>
@@ -64,6 +64,7 @@ export default function Weather() {
                 <div className="relative font-bold -top-2">
                     {weather.location.region.toUpperCase()}</div>
                 <div>
+                {console.log(weather.current.condition.text)}
                     {weather.current.condition.text} / {currentDate} / {currentTime}
                 </div>
             </div>
